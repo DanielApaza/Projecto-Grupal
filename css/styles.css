@@ -11322,3 +11322,26 @@ section#contact form#contactForm :-ms-input-placeholder {
 .texto-blanco {
   color: #ffffff;
 }
+
+.contenedorpaquetes{
+  display: flex;
+  justify-content: space-around;
+}
+
+.cajapaquete{
+  width: 261px;
+  height: 350px;
+  background-color: gray;
+  border: solid 1px;
+  margin: 10px;
+  border-radius: 2px;
+}
+
+.taming{
+  width: 100%;
+  height: auto;
+}
+
+#MostrarP1{
+  display: none;
+}

@@ -52,3 +52,31 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+window.onload=DocumentoCargado;
+function DocumentoCargado(){
+    let checkboxP1=document.getElementById("P1");
+    let cantpersonasP1=document.getElementById("cantP1");
+    cantpersonasP1.onchange=selectp1personas
+    checkboxP1.onchange=checkboxP1Apretado;
+    
+    MostrarPrecioTotal();
+}
+function selectp1personas()
+            {
+                MostrarPrecioTotal();
+            }
+
+function checkboxP1Apretado()
+            {
+                if(document.getElementById("P1").checked==true)
+                {
+                document.getElementById("MostrarP1").style.display="block";
+                }
+                else
+                {
+                    document.getElementById("Mostrarp1").style.display="none"
+
+                }
+                MostrarPrecioTotal();
+            }
