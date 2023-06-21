@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/styles.css" rel="stylesheet"/>
     <title>Comidas</title>
-  
 </head>
-<body> 
+<body>
+  <header class="masthead">
     <form action="#" method="get" id="formulariopersonal"></form>
     <div class="contenedorpaquetes" >
         
@@ -71,8 +71,8 @@
       </div>     
   </div>
  
-    <div id="preciototal">
- 
+    <div id="preciototal" class="btn btn-primary btn-xl text-uppercase">Precio
+      
     </div>
  </form>
          <script>
@@ -137,22 +137,22 @@
              // En base a los checkbox y los objetos select, esta función calcula el precio total
              function MostrarPrecioTotal()
              {
-               let precio = 0;
+               let Precio = 0;
 
                if (document.getElementById("P1").checked == true)
                {
-                   precio += 1000 * document.getElementById("cantP1").value;
+                   Precio += 1000 * document.getElementById("cantP1").value;
                }
 
                if (document.getElementById("P2").checked == true)
                {
-                   precio += 3200 * document.getElementById("cantP2").value;
+                   Precio += 3200 * document.getElementById("cantP2").value;
                }
                if (document.getElementById("P3").checked == true)
                {
-                   precio += 1800 * document.getElementById("cantP3").value;
+                   Precio += 1800 * document.getElementById("cantP3").value;
                }
-               document.getElementById("preciototal").innerHTML= "precio: $" + precio;
+               document.getElementById("preciototal").innerHTML= "precio: $" + Precio;
              }
              //Se ejecuta cuando cambia el valor del select
              function selectp1personas()
@@ -171,6 +171,7 @@
 
          </script>
     </div>
+  </header>   
 </body>
 
 </html>
