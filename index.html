@@ -30,9 +30,9 @@
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#services">Servicios</a></li>
                         <li class="nav-item"><a class="nav-link" href="#portfolio">Comidas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#team">Precio por personas</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">Sobre nosotros</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contactanos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="calculo.html">Precio por personas</a></li>
                     </ul>
                 </div>
             </div>
@@ -46,6 +46,7 @@
                 <a class="btn btn-primary btn-xl text-uppercase" href="#services">Saber Mas</a>
             </div>
         </header>
+        
         <!-- Services-->
         <section class="page-section" id="services">
             <div class="container">
@@ -182,6 +183,173 @@
                 </div>
             </div>
         </section>
+          <!-- Team-->
+          <header class="masthead" id="team" >
+            <form action="#" method="get" id="formulariopersonal"></form>
+            <h2 class="section-heading text-uppercase">Precio por personas</h2>
+            <div class="contenedorpaquetes" >
+                
+                  <div class="cajapaquete">
+                      <img src="rabas.jpg"class=tamimg alt="Entrada">
+                      <br>
+                      <label for="P1">
+                         Entrada
+                      </label>
+                      <input type="checkbox" id="P1" >
+                      <div id="MostrarP1"> 
+                        <label for="cantP1"> Personas</label>
+                        <select id="cantP1">
+                            <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                        </select> <br>
+                       </div> 
+                 </div>
+                  <div class="cajapaquete">
+                    <img src="carne.jpg"class=tamimg alt="carne">
+                     <br>
+                      <label for="P2">
+                        Principal
+                      </label>
+                      <input type="checkbox" id="P2" > <br>
+                      <div id="MostrarP2">
+                          <label for="cantP2"> Personas</label>
+                          <select id="cantP2">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                          </select>
+                          
+                      </div>
+                </div>  
+                <div class="cajapaquete">  
+                    <img src="postre.jpeg"class=tamimg alt="postre">
+                   <br>
+                  
+                    <label for="P2">
+                      Postres
+                    </label>
+                    <input type="checkbox" id="P3" > <br>
+                    <div id="MostrarP3">
+                        <label for="cantP3"> Personas</label>
+                        <select id="cantP3">
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                        </select>
+                        
+                    </div>
+              </div>     
+          </div>
+         
+            <div id="preciototal" class="btn btn-primary btn-xl text-uppercase">Precio
+              
+            </div>
+         </form>
+                 <script>
+                     //Cuando ocurre el evento página Web cargada el navegador llama a la función DocumentoCargado()
+                     window.onload=DocumentoCargado; 
+        
+                     //En esta función se capturan todos los eventos requeridos por el script
+                     function DocumentoCargado(){
+                        let checkboxP1 = document.getElementById("P1"); //obtiene los elementos del documento html y los asigna a variables
+                        let checkboxP2 = document.getElementById("P2"); 
+                        let checkboxP3 = document.getElementById("P3"); 
+                        let cantpersonasP1 = document.getElementById("cantP1");
+                        let cantpersonasP2 = document.getElementById("cantP2");
+                        let cantpersonasP3 = document.getElementById("cantP3");
+                        cantpersonasP1.onchange = selectp1personas; // Se ejecuta la función selectp1personas() cuando ocurre el evento
+                        cantpersonasP2.onchange = selectp2personas;
+                        cantpersonasP3.onchange = selectp3personas;
+                        checkboxP1.onclick = checkboxP1Apretado; 
+                        checkboxP2.onclick = checkboxP2Apretado;
+                        checkboxP3.onclick = checkboxP3Apretado;
+        
+                        MostrarPrecioTotal(); // llama a la función 
+                     }
+                     //Cuando el usuario aprieta el checkbox, se debe mostrar u ocultar el objeto select
+                     
+                     function checkboxP1Apretado()
+                     {
+                        if(document.getElementById("P1").checked == true)
+                        {
+                            document.getElementById("MostrarP1").style.display = "block";
+                        }
+                        else
+                        {
+                            document.getElementById("MostrarP1").style.display = "none";
+                        }
+                        MostrarPrecioTotal();
+                     }
+                     function checkboxP2Apretado()
+                     {
+                        if(document.getElementById("P2").checked == true)
+                        {
+                            document.getElementById("MostrarP2").style.display = "block";
+                        }
+                        else
+                        {
+                            document.getElementById("MostrarP2").style.display = "none";
+                        }
+                        MostrarPrecioTotal();
+                     }
+                     function checkboxP3Apretado()
+                     {
+                        if(document.getElementById("P3").checked == true)
+                        {
+                            document.getElementById("MostrarP3").style.display = "block";
+                        }
+                        else
+                        {
+                            document.getElementById("MostrarP3").style.display = "none";
+                        }
+                        MostrarPrecioTotal();
+                     }
+                     // En base a los checkbox y los objetos select, esta función calcula el precio total
+                     function MostrarPrecioTotal()
+                     {
+                       let Precio = 0;
+        
+                       if (document.getElementById("P1").checked == true)
+                       {
+                           Precio += 1000 * document.getElementById("cantP1").value;
+                       }
+        
+                       if (document.getElementById("P2").checked == true)
+                       {
+                           Precio += 3200 * document.getElementById("cantP2").value;
+                       }
+                       if (document.getElementById("P3").checked == true)
+                       {
+                           Precio += 1800 * document.getElementById("cantP3").value;
+                       }
+                       document.getElementById("preciototal").innerHTML= "precio: $" + Precio;
+                     }
+                     //Se ejecuta cuando cambia el valor del select
+                     function selectp1personas()
+                     {
+                       MostrarPrecioTotal();
+                     }
+                     function selectp2personas()
+                     {
+                       MostrarPrecioTotal();
+                     }
+                     function selectp3personas()
+                     {
+                       MostrarPrecioTotal();
+                     }
+        
+        
+                 </script>
+            </div>
+     </header>
+
         <!-- About-->
         <section class="page-section" id="about">
             <div class="container">
@@ -191,14 +359,10 @@
                 </div>
                     <p>Bienvenidos a “Soho bar”, donde la pasión por la comida y el compromiso con un futuro sostenible se unen. Nos enorgullece presentar un espacio gastronómico que no solo deleita tus sentidos, sino que también tiene en cuenta el impacto ambiental y social de nuestras acciones.</p>
                     <p>A través de nuestra cocina innovadora y consciente, nos esforzamos por abordar desafíos globales como el hambre, trabajamos de cerca con productores locales para obtener ingredientes frescos y de temporada, apoyando así a la comunidad y promoviendo la agricultura sostenible.</p>
-                    <p> Aqui te dejamos un <a href="https://youtu.be/6bTYG75RFq8" target="_blank">Video Explicativo</a> donde puedes conocer mas nuestros objetivos!</p> 
-                    <a href="grafico arbol.docx" target="_blank">Arbol del Sitio</a>
-                </div>
             </section>
             <hr class="m-0" />
             </div>
         </section>
-        <!-- Team-->
         <!-- Contact-->
         <section class="page-section" id="contact">
             <div class="container">
